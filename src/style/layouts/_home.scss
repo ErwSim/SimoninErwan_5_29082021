@@ -1,0 +1,23 @@
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+
+  .card {
+    min-width: 14em;
+    max-width: 14em;
+
+    img {
+      height: 10em;
+      object-fit: cover;
+    }
+
+    &__button {
+      margin-left: 0.25em;
+      margin-bottom: 0.25em;
+      width: 60%;
+      font-size: 1em;
+    }
+  }
+}

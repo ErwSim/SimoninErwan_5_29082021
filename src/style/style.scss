@@ -1,0 +1,18 @@
+@import "bootstrap";
+@import "./utils/variables";
+
+@import "./layouts/home";
+
+.bg {
+  background: map-get($colors, tertiary);
+}
+
+.btn-primary {
+  background: map-get($colors, primary);
+  border-color: map-get($colors, primary);
+
+  &:hover {
+    background: map-get($colors, secondary);
+    border-color: map-get($colors, secondary);
+  }
+}
