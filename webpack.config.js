@@ -1,8 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  watch: true,
-  mode: "development",
+  mode: "production",
   entry: {
     polyfill: "babel-polyfill",
     app: "./src/app.js",
