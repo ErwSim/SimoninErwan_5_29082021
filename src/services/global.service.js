@@ -1,19 +1,19 @@
-export class GlobalController {
+export class GlobalService {
   // TODO à mettre sur une variable env
   originUrl = "http://localhost:3000/api/";
-  controller;
+  service;
 
-  constructor(controller) {
-    this.controller = controller;
+  constructor(service) {
+    this.service = service;
   }
 
   /**
-   * Get all elements for a given controller
+   * Get all elements for a given service
    *
    * @returns {Promise} A promise of elements list
    */
   async getAll() {
-    const res = await fetch(`${this.originUrl}${this.controller}/`);
+    const res = await fetch(`${this.originUrl}${this.service}/`);
 
     if (!res.ok) {
       return Promise.reject(`Error ${res.status}`);
@@ -24,13 +24,13 @@ export class GlobalController {
   }
 
   /**
-   * Get one element for a given controller based on its id
+   * Get one element for a given service based on its id
    *
    * @param {number} id - The id of the element
    * @returns {Promise} A promise of the element
    */
   async getOne(id) {
-    const res = await fetch(`${this.originUrl}${this.controller}/${id}`);
+    const res = await fetch(`${this.originUrl}${this.service}/${id}`);
 
     if (!res.ok) {
       return Promise.reject(`Error ${res.status}`);
@@ -41,7 +41,7 @@ export class GlobalController {
   }
 
   /**
-   * Create a new order for a given controller
+   * Create a new order for a given service
    *
    * @param {string} firstName - The firstname of the customer
    * @param {string} lastName - Last lastname of the customer
@@ -63,7 +63,7 @@ export class GlobalController {
       products,
     };
 
-    const res = await fetch(`${this.originUrl}${this.controller}/order`, {
+    const res = await fetch(`${this.originUrl}${this.service}/order`, {
       method: "POST",
       headers: {
         Accept: "application/json",

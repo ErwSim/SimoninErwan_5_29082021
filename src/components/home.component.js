@@ -1,9 +1,9 @@
-import { CameraController } from "../controllers";
+import { CameraService } from "../services";
 import { checkUrl } from "../decorators";
 import { NumberHelper } from "../helpers";
 
 export class HomeComponent {
-  cameraController = new CameraController();
+  cameraService = new CameraService();
 
   elArticles = document.getElementById("articles");
   articles;
@@ -20,7 +20,7 @@ export class HomeComponent {
   @checkUrl(["/", "/index.html"])
   async getArticles() {
     try {
-      this.articles = await this.cameraController.getAll();
+      this.articles = await this.cameraService.getAll();
 
       this.addArticles();
     } catch (e) {
@@ -28,6 +28,9 @@ export class HomeComponent {
     }
   }
 
+  /**
+   * Add articles in the dom
+   */
   addArticles() {
     for (const article of this.articles) {
       const elCard = document.createElement("div");
