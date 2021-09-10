@@ -17,4 +17,13 @@ export class RouteHelper {
   static checkUrl(urlList) {
     return urlList.includes(RouteHelper.getUrl());
   }
+
+  /**
+   * Get query params and put them to URLSearchParams
+   *
+   * @return {object} URLSearchParams with current queryParams
+   */
+  static getQueryParams() {
+    return new URLSearchParams(window.location.search);
+  }
 }

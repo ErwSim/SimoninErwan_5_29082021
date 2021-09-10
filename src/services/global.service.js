@@ -1,6 +1,5 @@
 export class GlobalService {
-  // TODO à mettre sur une variable env
-  originUrl = "http://localhost:3000/api/";
+  originUrl = process.env.API_URL;
   service;
 
   constructor(service) {
