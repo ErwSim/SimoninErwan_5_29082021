@@ -6,13 +6,13 @@ This project is public and free to use, feel free to clone, modify, redistribute
 
 ## 2. **Install dependencies**
 
-    `npm install`
+`npm install`
 
 ## 3. **Generate .env file**
 
 You can copy .env.public to .env
 
-    `cp .env.public .env`
+`cp .env.public .env`
 
 The default behaviour is to use heroku hosted API. You can change this behaviour by changing API_URL in you .env file.
 You will find the API at this address https://github.com/OpenClassrooms-Student-Center/JWDP5.git
