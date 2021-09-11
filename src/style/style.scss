@@ -2,6 +2,7 @@
 @import "./utils/variables";
 
 @import "./layouts/home";
+@import "./layouts/product";
 
 .bg {
   background: map-get($colors, tertiary);
@@ -15,4 +16,10 @@
     background: map-get($colors, secondary);
     border-color: map-get($colors, secondary);
   }
+}
+
+#alerts {
+  position: absolute;
+  bottom: 0;
+  right: 1em;
 }

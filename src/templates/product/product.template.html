@@ -1,3 +1,40 @@
 <h1>{{name}}</h1>
 
-<div></div>
+<div class="d-flex">
+  <img src="{{imageUrl}}" title="{{name}}" alt="{{name}}" />
+  <p>{{description}}</p>
+  <form class="card" id="form-add-card" novalidate>
+    <div class="card-body">
+      <h5 class="card-title">Commander {{name}}</h5>
+      <div class="card-text">
+        <div class="mb-3">
+          <label for="quantity" class="form-label">Quantité</label>
+          <input
+            type="number"
+            name="quantity"
+            step="1"
+            min="1"
+            id="quantity"
+            value="1"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Veuillez entrer un nombre valide.</div>
+        </div>
+
+        <div class="mb-3">
+          <select class="form-select" name="lense" required>
+            {{lenseOptions}}
+          </select>
+          <div class="invalid-feedback">
+            Veuillez choisir une taille valide.
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary card__button">
+        Ajouter au panier
+      </button>
+    </div>
+  </form>
+</div>
