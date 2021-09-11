@@ -1,9 +1,12 @@
 import { checkUrl } from "../decorators";
+import { HtmlParser } from "../helpers";
 import { RouteHelper } from "../helpers/route.helper";
 import { CameraService } from "../services";
+import productHtml from "../templates/product/product.template.html";
 
 export class ProductComponent {
   cameraService = new CameraService();
+  elProduct = document.getElementById("product");
   id;
   product;
 
@@ -22,9 +25,13 @@ export class ProductComponent {
     try {
       this.product = await this.cameraService.getOne(this.id);
 
-      this.addArticles();
+      this.addProduct();
     } catch (e) {
       console.trace(`Cannot retrieve the product with error ${e}`);
     }
+  }
+
+  addProduct() {
+    this.elProduct.innerHTML = HtmlParser(productHtml, this.product);
   }
 }

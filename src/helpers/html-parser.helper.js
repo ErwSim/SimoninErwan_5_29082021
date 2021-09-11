@@ -10,7 +10,6 @@ export function HtmlParser(html, obj) {
   for (const [key, value] of Object.entries(obj)) {
     const re = new RegExp(`{{${key}}}`, "g");
     html = html.replace(re, value);
-    console.log(html);
   }
 
   return html;

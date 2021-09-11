@@ -1,7 +1,7 @@
 import { CameraService } from "../services";
 import { checkUrl } from "../decorators";
 import { HtmlParser, NumberHelper } from "../helpers";
-import homeHtml from "../templates/home.template.html";
+import articlesHtml from "../templates/home/articles.template.html";
 
 export class HomeComponent {
   cameraService = new CameraService();
@@ -36,7 +36,7 @@ export class HomeComponent {
     let articleHtml = "";
     for (const article of this.articles) {
       article.price = NumberHelper.priceOf(article.price);
-      articleHtml += HtmlParser(homeHtml, article);
+      articleHtml += HtmlParser(articlesHtml, article);
     }
 
     this.elArticles.innerHTML = articleHtml;
