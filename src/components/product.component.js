@@ -68,6 +68,9 @@ export class ProductComponent {
     return lenseHtml;
   }
 
+  /**
+   * When the user clicks on the submit button, the product is added to the basket
+   */
   onSubmit() {
     const form = document.getElementById("form-add-card");
 

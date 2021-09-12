@@ -1,0 +1,18 @@
+<li
+  class="list-group-item d-flex content-start align-items-center"
+  data-basket-id="{{_id}}"
+>
+  <strong style="flex-basis: 10em">{{name}}</strong>
+  <span style="flex-basis: 30em">{{price}} P.U.</span>
+  <span style="flex-basis: 30em">
+    <i class="fas fa-minus" data-basket-minus="{{_id}}"></i>
+    <span class="badge btn-primary badge-pill" data-basket-quantity="{{_id}}">
+      {{quantity}}
+    </span>
+    <i class="fas fa-plus" data-basket-plus="{{_id}}"></i>
+  </span>
+  <span>
+    <strong>Total :</strong>
+    <span data-basket-total-price="{{_id}}">{{totalPrice}}</span>
+  </span>
+</li>

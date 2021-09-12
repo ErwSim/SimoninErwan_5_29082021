@@ -30,6 +30,6 @@ Files necessary to be upload in order to run the project are :
 
      - index.html
      - product.html
-     - card.html
-     - confirmation.html
+     - basket.html
+     - order-confirm.html
      - dist/ folder and all files inside it

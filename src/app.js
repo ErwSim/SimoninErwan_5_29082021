@@ -1,7 +1,9 @@
-import { HomeComponent, ProductComponent } from "./components";
+import { BasketComponent, HomeComponent, ProductComponent } from "./components";
+import { BasketHelper } from "./helpers";
 import "./style/style.scss";
 
 new HomeComponent();
-export default {
-  productComponent: new ProductComponent(),
-};
+new ProductComponent();
+new BasketComponent();
+
+new BasketHelper().updateBasketQuantity();
