@@ -3,6 +3,7 @@ import { HtmlParser, NumberHelper } from "../helpers";
 import { CameraService } from "../services";
 import basketHtml from "../templates/basket/basket.template.html";
 import basketItemHtml from "../templates/basket/basket-item.template.html";
+import failureHtml from "../templates/basket/failure.template.html";
 import { BasketHelper } from "../helpers/basket.helper";
 
 export class BasketComponent {
@@ -56,6 +57,7 @@ export class BasketComponent {
   /**
    * Update basket total price directly in the dom
    */
+  @checkUrl(["/basket.html"])
   setBasketTotalPrice() {
     const basket = new BasketHelper().get();
     let totalPrice = 0;
@@ -121,10 +123,11 @@ export class BasketComponent {
    * When the user clicks on the submit button, all products in the basket are ordered
    * after some verifications
    */
+  @checkUrl(["/basket.html"])
   onSubmit() {
     const form = document.getElementById("form-order");
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       const firstName = event.target.firstName.value;
@@ -144,7 +147,7 @@ export class BasketComponent {
           }
         }
 
-        this.cameraService.createOrder(
+        const order = await this.cameraService.createOrder(
           firstName,
           lastName,
           address,
@@ -152,6 +155,13 @@ export class BasketComponent {
           email,
           products
         );
+
+        if (order) {
+          sessionStorage.setItem("order", JSON.stringify(order));
+          location.href = "/order-confirm.html";
+        } else {
+          document.getElementById("alerts").innerHTML = failureHtml;
+        }
       }
 
       form.classList.add("was-validated");
