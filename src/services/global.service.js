@@ -68,7 +68,7 @@ export class GlobalService {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: payload,
+      body: JSON.stringify(payload),
     });
 
     if (!res.ok) {

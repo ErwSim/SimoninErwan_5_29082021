@@ -15,6 +15,7 @@ You can copy .env.public to .env
 `cp .env.public .env`
 
 The default behaviour is to use heroku hosted API. You can change this behaviour by changing API_URL in your .env file.
+If you use the heroku hosted API keep in mind that the first load can be slow.
 You will find the API at this address https://github.com/OpenClassrooms-Student-Center/JWDP5.git
 
 ## 4. **Start the project**

@@ -14,6 +14,7 @@ export class BasketComponent {
     this.addBasket();
     this.updateBasket();
     this.setBasketTotalPrice();
+    this.onSubmit();
   }
 
   /**
@@ -67,6 +68,9 @@ export class BasketComponent {
       NumberHelper.priceOf(totalPrice);
   }
 
+  /**
+   * Update basket when the user clicks on minus or plus
+   */
   updateBasket() {
     document.querySelectorAll("i[data-basket-plus]").forEach((el) => {
       el.addEventListener("click", () => {
@@ -110,6 +114,47 @@ export class BasketComponent {
 
         this.setBasketTotalPrice();
       });
+    });
+  }
+
+  /**
+   * When the user clicks on the submit button, all products in the basket are ordered
+   * after some verifications
+   */
+  onSubmit() {
+    const form = document.getElementById("form-order");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const firstName = event.target.firstName.value;
+      const lastName = event.target.lastName.value;
+      const address = event.target.address.value;
+      const city = event.target.city.value;
+      const email = event.target.email.value;
+
+      if (!form.checkValidity()) {
+        event.stopPropagation();
+      } else {
+        const basket = new BasketHelper().get();
+        const products = [];
+        for (const item of basket) {
+          for (let i = 0; i < item.quantity; i++) {
+            products.push(item._id);
+          }
+        }
+
+        this.cameraService.createOrder(
+          firstName,
+          lastName,
+          address,
+          city,
+          email,
+          products
+        );
+      }
+
+      form.classList.add("was-validated");
     });
   }
 }

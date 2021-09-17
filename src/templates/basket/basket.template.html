@@ -1,14 +1,82 @@
 <div class="d-flex justify-content-between">
-  <div class="flex-fill">
+  <div style="flex-basis: 50em">
     <ul class="list-group">
       {{basketItems}}
     </ul>
     <div>Prix total : <span id="basket-total-price"></span></div>
   </div>
 
-  <div class="card">
+  <div class="card" style="flex-basis: 30em">
     <div class="card-body">
       <h5 class="card-title">Passer commande</h5>
+
+      <form id="form-order" novalidate>
+        <div class="row mb-3">
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              name="firstName"
+              placeholder="Prénom"
+              pattern="[A-Za-z]+"
+              required
+            />
+            <div class="invalid-feedback">Veuillez renseigner votre prénom</div>
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              name="lastName"
+              placeholder="Nom"
+              pattern="[A-Za-z]+"
+              required
+            />
+            <div class="invalid-feedback">Veuillez renseigner votre nom</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name="address"
+            placeholder="Adresse"
+            required
+          />
+          <div class="invalid-feedback">
+            Veuillez renseigner votre adresse postale
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name="city"
+            placeholder="Ville"
+            required
+          />
+          <div class="invalid-feedback">Veuillez renseigner votre ville</div>
+        </div>
+
+        <div class="mb-3">
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            placeholder="Email"
+            required
+          />
+          <div class="invalid-feedback">
+            Veuillez renseigner un e-mail valide
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary card__button">
+          Commander
+        </button>
+      </form>
     </div>
   </div>
 </div>
