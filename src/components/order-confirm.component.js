@@ -1,4 +1,4 @@
-import { HtmlParser } from "../helpers";
+import { HtmlParser, NumberHelper } from "../helpers";
 import orderConfirmHtml from "../templates/order-confirm/order-confirm.template.html";
 import noOrderHtml from "../templates/order-confirm/no-order.template.html";
 import { checkUrl } from "../decorators";
@@ -35,8 +35,14 @@ export class OrderConfirmComponent {
   addConfirmMessage() {
     const order = this.confirmedOrder();
     if (order) {
+      const totalPrice = order.products.reduce(
+        (prev, cur) => prev + cur.price,
+        0
+      );
+
       this.elOrder.innerHTML = HtmlParser(orderConfirmHtml, {
         orderId: this.confirmedOrder().orderId,
+        totalPrice: NumberHelper.priceOf(totalPrice),
       });
 
       this.deleteOrderHistory();
